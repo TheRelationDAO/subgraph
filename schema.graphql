@@ -1,6 +1,13 @@
-type ExampleEntity @entity {
+type People @entity {
   id: ID!
-  count: BigInt!
   owner: Bytes! # address
-  approved: Bytes! # address
+  followCount: BigInt
+  followedCount: BigInt
+  profile: String
+}
+
+type Follow @entity {
+  id: ID!
+  fromId: BigInt
+  toId: BigInt
 }
