@@ -8,7 +8,7 @@ import {
   store,
   Bytes,
   BigInt,
-  BigDecimal
+  BigDecimal,
 } from "@graphprotocol/graph-ts";
 
 export class People extends Entity {
@@ -54,10 +54,10 @@ export class People extends Entity {
     this.set("owner", Value.fromBytes(value));
   }
 
-  get followCount(): BigInt | null {
+  get followCount(): BigInt {
     let value = this.get("followCount");
     if (!value || value.kind == ValueKind.NULL) {
-      return null;
+      return BigInt.fromI32(0);
     } else {
       return value.toBigInt();
     }
@@ -71,10 +71,10 @@ export class People extends Entity {
     }
   }
 
-  get followedCount(): BigInt | null {
+  get followedCount(): BigInt {
     let value = this.get("followedCount");
     if (!value || value.kind == ValueKind.NULL) {
-      return null;
+      return BigInt.fromI32(0);
     } else {
       return value.toBigInt();
     }

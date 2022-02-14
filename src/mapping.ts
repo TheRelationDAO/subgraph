@@ -50,13 +50,17 @@ export function handleFollowEvt(event: FollowEvt): void {
 
     let followPeople = People.load(event.params._from.toString());
     if (followPeople) {
-      followPeople.followCount?.plus(BigInt.fromI32(1));
+      followPeople.followCount = followPeople.followCount.plus(
+        BigInt.fromI32(1)
+      );
       followPeople.save();
     }
 
     let followedPeople = People.load(event.params._to.toString());
     if (followedPeople) {
-      followedPeople.followedCount?.plus(BigInt.fromI32(1));
+      followedPeople.followedCount = followedPeople.followedCount.plus(
+        BigInt.fromI32(1)
+      );
       followedPeople.save();
     }
   }
@@ -79,13 +83,17 @@ export function handleUnFollowEvt(event: UnFollowEvt): void {
 
     let followPeople = People.load(event.params._from.toString());
     if (followPeople) {
-      followPeople.followCount?.minus(BigInt.fromI32(1));
+      followPeople.followCount = followPeople.followCount.minus(
+        BigInt.fromI32(1)
+      );
       followPeople.save();
     }
 
     let followedPeople = People.load(event.params._to.toString());
     if (followedPeople) {
-      followedPeople.followedCount?.minus(BigInt.fromI32(1));
+      followedPeople.followedCount = followedPeople.followedCount.minus(
+        BigInt.fromI32(1)
+      );
       followedPeople.save();
     }
   }
